@@ -1,0 +1,67 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login - Smarteye</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+</head>
+
+<body style="background: linear-gradient(135deg, #ff9a9e, #fad0c4); font-family: 'Poppins', sans-serif;">
+
+    <div class="container-fluid" style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+        <div class="container" style="max-width: 450px; background: white; padding: 30px; border-radius: 15px; box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);">
+            
+            <p style="text-align: center; color: #ff4d6d; font-weight: bold; font-size: 18px;">
+                Don't have an account? 
+                <a href="{% url 'signup' %}" style="color: #ff4d6d; text-decoration: none;">Sign Up</a>
+            </p>
+
+            <h3 style="text-align: center; color: #ff4d6d;">Sign In to Smarteye</h3>
+
+            <form role="form" action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                
+                <label for="" class="form-label" style="color: red;">{{msg}}</label>
+                
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="Enter Email Address" name="email" 
+                        style="border-radius: 10px; border: 2px solid #ff4d6d;">
+                    <label for="floatingInput" style="color: #ff4d6d;">Email address</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" 
+                        style="border-radius: 10px; border: 2px solid #ff4d6d;">
+                    <label for="floatingPassword" style="color: #ff4d6d;">Password</label>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <!-- Back Button -->
+                    <a href="{% url 'index' %}" class="btn btn-secondary" 
+                        style="background: #bbb; border: none; font-size: 16px; padding: 10px 20px; border-radius: 25px;">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </a>
+
+                    <!-- Login Button -->
+                    <button type="submit" class="btn btn-primary"
+                        style="background: #ff4d6d; border: none; font-size: 16px; padding: 10px 20px; border-radius: 25px;">
+                        Login
+                    </button>
+                </div>
+
+                <p style="text-align: center; margin-top: 10px;">
+                    <a href="" style="color: #ff4d6d; text-decoration: none; font-weight: bold;">Forgot Password?</a>
+                </p>
+
+            </form>
+
+        </div>
+    </div>
+
+</body>
+</html>
