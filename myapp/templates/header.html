@@ -70,7 +70,12 @@
                             <li><a href="{% url 'shop' %}">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
-                                    <li><a href="{% url 'product_details' %}">Product Details</a></li>
+                                    {% if product %}
+                                    <li><a href="{% url 'product_details' product.id %}">Product Details</a></li>
+                                {% else %}
+                                    <li><a href="{% url 'product_details' 1 %}">Product Details</a></li>  <!-- Default ID -->
+                                {% endif %}
+                                
                                     <li><a href="{% url 'shop_cart' %}">Shop Cart</a></li>
                                     <li><a href="{% url 'checkout' %}">Checkout</a></li>
                                 </ul>
@@ -83,12 +88,13 @@
                 <div class="col-lg-3">
                     <div class="header__right">
                         <div class="header__right__auth">
-                            <a href="{% url 'login' %}">Login</a>
+                            <a href="{% url 'login' %}">login</a>
                             <a href="{% url 'signup' %}">Register</a>
+                            <a href="{% url 'logout' %}">logout</a>
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>
-                            <li><a href="#"><span class="icon_heart_alt"></span>
+                            <li><a href="{% url 'shop_cart' %}"><span class="icon_bag_alt"></span>
                                 <div class="tip">2</div>
                             </a></li>
                             <li><a href="{% url 'shop_cart' %}"><span class="icon_bag_alt"></span>
